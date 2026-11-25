@@ -323,9 +323,15 @@ with tab4:
     matching_reviews = df[df["Sentiment"] == radio_sent]
     if st.button("Draw Another Random Review") or True:
         sample_row = matching_reviews.sample(n=1).iloc[0]
+        sent_val = sample_row["Sentiment"]
+        cat_val = sample_row["Product_Category"]
+        reg_val = sample_row["Region"]
+        fb_val = sample_row["Customer_Feedback"]
+        ord_val = sample_row["Order_ID"]
+        rev_val = sample_row["Total_Revenue"]
         st.success(
-            f"**[{sample_row['Sentiment']} | {sample_row['Product_Category']} | {sample_row['Region']}]** "
-            f"— *"{sample_row['Customer_Feedback']}"* (Order `{sample_row['Order_ID']}`, Revenue: `${sample_row['Total_Revenue']:,.2f}`)"
+            f"**[{sent_val} | {cat_val} | {reg_val}]** "
+            f"— *\"{fb_val}\"* (Order `{ord_val}`, Revenue: `${rev_val:,.2f}`)"
         )
 
 # ---------------------------------------------------------
